@@ -45,7 +45,7 @@ class App extends Component {
       //c0c0ac362b03416da06ab3fa36fb58e3
       app.models.predict(Clarifai.FACE_DETECT_MODEL , this.state.input).then(
       function(response){
-        console.log(response.outputs[0].data.regions[0].region.info.bounding_box);
+        console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
       },
       function(err){
         //action1
