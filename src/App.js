@@ -66,14 +66,19 @@ class App extends Component {
       //8db5a955134d4204a51971f951872e50
       //c0c0ac362b03416da06ab3fa36fb58e3
       //console.log(response.outputs[0].data.regions[0].region_info.bounding_box);
-      app.models.predict(Clarifai.FACE_DETECT_MODEL , this.state.input).then(response => this.displayFaceBox(this.calculateFaceLocation(response))).catch(err => console.log(err));}
+      app.models.predict(Clarifai.FACE_DETECT_MODEL , this.state.input).then(response => this.displayFaceBox(this.calculateFaceLocation(response))).catch(err => console.log(err));
+    }
+
+  onRouteChange = () => {
+    this.setState({route : 'home'});
+  }
 
   render(){
     return (
       <div className="App">
         <Navigation/>
         {this.state.route === 'signin' ?
-          <Signin/>
+          <Signin onRouteChange = {this.onRouteChange}/>
             :
           <div>
             <Logo/>
