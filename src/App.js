@@ -69,14 +69,14 @@ class App extends Component {
       app.models.predict(Clarifai.FACE_DETECT_MODEL , this.state.input).then(response => this.displayFaceBox(this.calculateFaceLocation(response))).catch(err => console.log(err));
     }
 
-  onRouteChange = () => {
-    this.setState({route : 'home'});
+  onRouteChange = (route) => {
+    this.setState({route : route});
   }
 
   render(){
     return (
       <div className="App">
-        <Navigation/>
+        <Navigation onRouteChange={this.onRouteChange}/>
         {this.state.route === 'signin' ?
           <Signin onRouteChange = {this.onRouteChange}/>
             :
